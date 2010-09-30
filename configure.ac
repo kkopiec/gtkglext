@@ -52,7 +52,7 @@ AC_CONFIG_MACRO_DIR([m4macros])
 cflags_set=${CFLAGS+set}
 
 # Initialize automake stuff
-AM_INIT_AUTOMAKE([1.11 no-define dist-bzip2 dist-zip dist-xz])
+AM_INIT_AUTOMAKE([1.11 no-define -Wno-portability dist-bzip2 dist-zip dist-xz])
 
 # Specify a configuration file
 AM_CONFIG_HEADER([config.h])
@@ -111,6 +111,12 @@ AC_CHECK_PROG([ms_librarian], [lib.exe], [yes], [no])
 AC_PROG_LN_S
 
 AC_PATH_PROGS([PERL], [perl5 perl])
+
+##################################################
+# GObject introspection
+##################################################
+
+GOBJECT_INTROSPECTION_CHECK([0.9.3])
 
 ##################################################
 # Checks for gtk-doc and docbook-tools
